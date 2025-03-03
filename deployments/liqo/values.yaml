@@ -647,12 +647,12 @@ offloading:
       enable: true
       # -- Labels for the node selector.
       labels:
-        liqo.io/type: virtual-node
+        omni.cast.ai/type: virtual-node
     # -- Tolerations for the runtime class.
     tolerations:
       enable: true
       # -- Tolerations for the tolerations.
       tolerations:
-      - key: virtual-node.liqo.io/not-allowed
+      - key: virtual-node.omni.cast.ai/not-allowed
         operator: Exists
         effect: NoExecute
