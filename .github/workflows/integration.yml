@@ -292,18 +292,3 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
          path: ./liqoctl/
-
-      - name: Update Helm index
-        run: |
-          repo=$(cut -d '/' -f 2 <<< "$GITHUB_REPOSITORY")
-          owner=$(cut -d '/' -f 1 <<< "$GITHUB_REPOSITORY")
-
-          # Update index and push to github pages
-          ./cr index \
-              --owner "$owner" \
-              --git-repo "$repo" \
-              --release-name-template "${{ needs.configure.outputs.commit-ref }}" \
-              --token "${{ secrets.GITHUB_TOKEN }}" \
-              --index-path index.yaml \
-              --pages-index-path index.yaml \
-              --push
