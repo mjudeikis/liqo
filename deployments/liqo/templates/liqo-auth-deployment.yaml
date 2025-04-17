@@ -61,6 +61,10 @@ spec:
             {{- include "liqo.containerSecurityContext" . | nindent 12 }}
           name: {{ $authConfig.name }}
           imagePullPolicy: {{ .Values.pullPolicy }}
+          ports:
+            - name: https
+              containerPort: 8443
+              protocol: TCP
           command: ["/usr/bin/auth-service"]
           args:
           - --cluster-id=$(CLUSTER_ID)
